@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import { filterImageFromURL, deleteLocalFiles } from "./util/util";
 
@@ -11,7 +11,7 @@ const port = process.env.PORT || 8082;
 // Use the body parser middleware for post requests
 app.use(bodyParser.json());
 
-app.get("/filteredimage", async (req, res) => {
+app.get("/filteredimage", async (req: Request, res: Response) => {
   if (!req.query.image_url) {
     return res
       .status(400)
